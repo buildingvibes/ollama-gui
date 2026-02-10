@@ -21,10 +21,10 @@ export const toggleSettingsPanel = () => (isSettingsOpen.value = !isSettingsOpen
 export const toggleSystemPromptPanel = () =>
   (isSystemPromptOpen.value = !isSystemPromptOpen.value)
 
-// Get the effective locale for date formatting
-export const getEffectiveLocale = () => {
-  return locale.value === 'auto' ? navigator.language : locale.value
-}
+// Effective locale for date formatting (resolves 'auto' to system locale)
+export const effectiveLocale = computed(() =>
+  locale.value === 'auto' ? navigator.language : locale.value
+)
 
 // Database Layer
 export const configDbLayer = {

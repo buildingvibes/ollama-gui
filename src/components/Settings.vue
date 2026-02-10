@@ -85,7 +85,7 @@ const localeOptions = [
           <select
             id="locale-select"
             v-model="locale"
-            class="block w-full rounded-lg bg-gray-100 p-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-800 dark:placeholder-gray-300 dark:focus:ring-blue-600"
+            class="block w-full rounded-lg border border-gray-300 bg-gray-100 p-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:bg-gray-800 dark:placeholder-gray-300 dark:focus:ring-blue-600"
           >
             <option v-for="option in localeOptions" :key="option.value" :value="option.value">
               {{ option.label }}
