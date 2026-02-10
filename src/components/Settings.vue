@@ -11,6 +11,7 @@ import {
   showSystem,
   gravatarEmail,
   toggleSettingsPanel,
+  locale,
 } from '../services/appConfig.ts'
 import { useChats } from '../services/chat.ts'
 
@@ -22,6 +23,29 @@ const confirmWipe = () => {
     wipeDatabase()
   }
 }
+
+// Common locale options
+const localeOptions = [
+  { value: 'auto', label: 'Auto (System Default)' },
+  { value: 'en-US', label: 'English (US)' },
+  { value: 'en-GB', label: 'English (UK)' },
+  { value: 'de-DE', label: 'Deutsch (Germany)' },
+  { value: 'es-ES', label: 'Español (Spain)' },
+  { value: 'fr-FR', label: 'Français (France)' },
+  { value: 'it-IT', label: 'Italiano (Italy)' },
+  { value: 'ja-JP', label: '日本語 (Japan)' },
+  { value: 'ko-KR', label: '한국어 (Korea)' },
+  { value: 'nb-NO', label: 'Norsk (Norway)' },
+  { value: 'nl-NL', label: 'Nederlands (Netherlands)' },
+  { value: 'pl-PL', label: 'Polski (Poland)' },
+  { value: 'pt-BR', label: 'Português (Brazil)' },
+  { value: 'pt-PT', label: 'Português (Portugal)' },
+  { value: 'ru-RU', label: 'Русский (Russia)' },
+  { value: 'sv-SE', label: 'Svenska (Sweden)' },
+  { value: 'tr-TR', label: 'Türkçe (Turkey)' },
+  { value: 'zh-CN', label: '中文 (China)' },
+  { value: 'zh-TW', label: '中文 (Taiwan)' },
+]
 </script>
 
 <template>
@@ -53,6 +77,21 @@ const confirmWipe = () => {
         <TextInput id="base-url" label="Base URL" v-model="baseUrl" />
 
         <TextInput id="gravatar-email" label="Gravatar Email" v-model="gravatarEmail" />
+
+        <div>
+          <label for="locale-select" class="mb-2 mt-4 block px-2 text-sm font-medium">
+            Date/Time Locale
+          </label>
+          <select
+            id="locale-select"
+            v-model="locale"
+            class="block w-full rounded-lg bg-gray-100 p-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-blue-600 dark:bg-gray-800 dark:placeholder-gray-300 dark:focus:ring-blue-600"
+          >
+            <option v-for="option in localeOptions" :key="option.value" :value="option.value">
+              {{ option.label }}
+            </option>
+          </select>
+        </div>
 
         <div>
           <label for="chat-history-length" class="mb-2 mt-4 block px-2 text-sm font-medium">

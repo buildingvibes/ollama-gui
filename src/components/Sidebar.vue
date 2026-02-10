@@ -14,8 +14,10 @@ import {
   isSystemPromptOpen,
   toggleSettingsPanel,
   toggleSystemPromptPanel,
+  getEffectiveLocale,
 } from '../services/appConfig.ts'
 import { useChats } from '../services/chat.ts'
+import { computed } from 'vue'
 
 const { sortedChats, activeChat, switchChat, deleteChat, startNewChat } =
   useChats()
@@ -34,7 +36,7 @@ const checkSystemPromptPanel = () => {
   isSystemPromptOpen.value = false
 }
 
-const lang = navigator.language
+const lang = computed(() => getEffectiveLocale())
 </script>
 
 <template>

@@ -16,9 +16,15 @@ export const baseUrl = useLocalStorage('baseUrl', 'http://localhost:11434/api')
 export const isDarkMode = useLocalStorage('darkMode', true)
 export const isSettingsOpen = useLocalStorage('settingsPanelOpen', true)
 export const isSystemPromptOpen = useLocalStorage('systemPromptOpen', false)
+export const locale = useLocalStorage('locale', 'auto')
 export const toggleSettingsPanel = () => (isSettingsOpen.value = !isSettingsOpen.value)
 export const toggleSystemPromptPanel = () =>
   (isSystemPromptOpen.value = !isSystemPromptOpen.value)
+
+// Get the effective locale for date formatting
+export const getEffectiveLocale = () => {
+  return locale.value === 'auto' ? navigator.language : locale.value
+}
 
 // Database Layer
 export const configDbLayer = {
